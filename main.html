@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dreamcast Library</title></head>
+<body>
+<h1>My Dreamcast Games</h1>
+<ul id="game-list"></ul>
+<script>
+fetch('/api/games')
+  .then(res => res.json())
+  .then(games => {
+    const ul = document.getElementById('game-list');
+    games.forEach(g => {
+      const li = document.createElement('li');
+      li.textContent = `${g.title} (${g.region}, ${g.year})`;
+      ul.appendChild(li);
+    });
+  });
+</script>
+</body>
+</html>
